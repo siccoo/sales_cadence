@@ -51,27 +51,23 @@
                         </li>
                         <li class="has-sub">
                             <a class="js-arrow" href="#">
-                                <i class="fas fa-trophy"></i>Features
+                                <i class="fas fa-trophy"></i>Leads
                                 <span class="arrow">
                                     <i class="fas fa-angle-down"></i>
                                 </span>
                             </a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
-                                    <a href="table.html">
-                                        <i class="fas fa-table"></i>Tables</a>
+                                    <a href={{route('leads.create')}}>
+                                        <i class="fas fa-table"></i>Add Lead</a>
                                 </li>
                                 <li>
-                                    <a href="form.html">
-                                        <i class="far fa-check-square"></i>Forms</a>
+                                    <a href={{route('leads.upload')}}>
+                                        <i class="far fa-check-square"></i>Upload Leads</a>
                                 </li>
                                 <li>
-                                    <a href="calendar.html">
-                                        <i class="fas fa-calendar-alt"></i>Calendar</a>
-                                </li>
-                                <li>
-                                    <a href="map.html">
-                                        <i class="fas fa-map-marker-alt"></i>Maps</a>
+                                    <a href={{route('leads.index')}}>
+                                        <i class="far fa-calendar-alt"></i>Manage Leads</a>
                                 </li>
                             </ul>
                         </li>

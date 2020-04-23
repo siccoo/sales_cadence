@@ -55,7 +55,6 @@
 
             <!-- STATISTIC-->
             @yield('content')
-
             <section>
                 <div class="container-fluid">
                     <div class="row">
@@ -69,4 +68,5 @@
             </section>
             <!-- END PAGE CONTAINER-->
         </div>
+    </div>
 		@include('frontend.layout.footer')

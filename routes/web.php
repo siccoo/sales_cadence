@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('frontend.index');
 });
+
+Route::get('leads.upload', 'LeadController@upload')->name('leads.upload');
+Route::post('leads/upload/post', 'LeadController@uploadPost')->name('leads.upload.post');
+Route::resource('leads', 'LeadController');
+

@@ -14649,3 +14649,38 @@ section {
 .vue-lists ul, .vue-lists ol {
     padding-left: 30px;
 }
+
+
+/*ADDITION */
+
+.lead-form{
+    margin :20px auto 0px auto;
+}
+
+.card-footer{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.card-footer button{
+    margin-right: 5px;
+}
+
+.lead-upload{
+    display: flex;
+    justify-content: center;
+}
+
+.lead-upload .zmdi{
+    font-size: 50px;
+}
+
+.lead-upload .card{
+    min-height: 250px;
+}
+
+.card .text-center{
+    padding: 10px;
+}
+
