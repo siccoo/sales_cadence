@@ -35,34 +35,29 @@ class LeadController extends Controller
      */
     public function create()
     {
-//        $users = User::role('Sales')->get();
-//        $products = Product::all();
-//        return view('leads.create', compact(['users', 'products']));
-        return view('frontend.leads.create');
+//      $users = auth()->user();
+        $user = 1;
+        return view('frontend.leads.create', compact(['user']));
 
     }
 
 
     /**
      * @param LeadRequest $request
-     * @return $this
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(LeadRequest $request)
     {
         $input = $request->validated();
-        $lead = Lead::create([
+        Lead::create([
             'first_name' => $input['first_name'],
             'last_name' => $input['last_name'],
             'email' => $input['email'],
             'phone' => $input['phone'],
             'company_name' => $input['company_name'],
-            'designation' => $input['designation']
+            'designation' => $input['designation'],
+            'user_id' => $input['user_id']
         ]);
-
-        $user = User::find($input['user_id']);
-
-        // Save to lead_user table
-        $user->leads()->attach($lead->id);
 
         return redirect()->route('leads.index')
             ->with('success', 'Lead created successfully.');
@@ -147,7 +142,6 @@ class LeadController extends Controller
 
         return redirect()->route('leads.index')
             ->with('success', 'Leads uploaded successfully');
-
     }
 
 }
