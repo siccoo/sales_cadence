@@ -68,5 +68,8 @@
             </section>
             <!-- END PAGE CONTAINER-->
         </div>
+<<<<<<< HEAD
     </div>
+=======
+>>>>>>> auth
 		@include('frontend.layout.footer')
