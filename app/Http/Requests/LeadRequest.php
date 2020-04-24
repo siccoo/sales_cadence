@@ -13,7 +13,7 @@ class LeadRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,13 @@ class LeadRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required|unique:leads,email',
+            'phone' => 'required|max:20',
+            'company_name' => 'nullable',
+            'designation' =>'nullable',
+            'user_id' => 'required'
         ];
     }
 }
