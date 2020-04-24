@@ -4,32 +4,35 @@ namespace App\Imports;
 
 use App\Lead;
 use Illuminate\Support\Collection;
+//use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithValidation;
 
+
 class LeadsImport implements ToCollection, WithHeadingRow, WithValidation
 {
-    /**
-     * @param Collection $collection
-     * @return Lead
-     */
 
     public function collection(Collection $collection)
     {
-        foreach ($collection as $lead){
-            $exist = Lead::where('email', $lead['email'])->first();
-            if($lead['email'] !== '' && $exist === null && $lead['email'] !==null){
-                //        $userId = auth()->user()->id;
-                return new Lead([
-                    'first_name' => $lead['first_name'],
-                    'last_name' => $lead['last_name'],
-                    'email' => $lead['email'],
+
+
+
+//        $userId = Auth::user()->id;
+
+        // TODO: Implement collection() method.
+        foreach ($collection as $row){
+            $exist = Lead::where('email', $row['email'])->first();
+            if($row['email'] !== '' && $exist === null && $row['email'] !== null){
+                Lead::create([
+                    'first_name' => $row['first_name'],
+                    'last_name' => $row['last_name'],
+                    'email' => $row['email'],
                     'user_id' => 1,
-                    'phone' => $lead['phone'],
-                    'company_name' => $lead['company_name'],
-                    'designation' => $lead['designation'],
+                    'phone' => $row['phone'],
+                    'company_name' => $row['company_name'],
+                    'designation' => $row['designation'],
                     'created_at' => now(),
                     'updated_at' => now(),
                 ]);
@@ -50,4 +53,6 @@ class LeadsImport implements ToCollection, WithHeadingRow, WithValidation
             'email.unique' => 'A lead already exit with this email',
         ];
     }
+
 }
+
