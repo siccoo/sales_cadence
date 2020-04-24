@@ -39,7 +39,8 @@ Route::group(['middleware' => ['user']], function(){
     
     Route::post('/add-email-template', 'EmailTemplateController@save')->name('email-template');
 
-    Route::get('/my-template', 'EmailTemplateController@allTemplate')->name('email-template');
+    Route::get('/my-template', 'EmailTemplateController@allTemplate')->name('my-template');
+
 });
 
 // Route::get('/sign-in', 'Auth@signinPage')->name('signin');

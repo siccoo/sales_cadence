@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\EmailTemplate;
+use Sentinel;
 
 class EmailTemplateController extends Controller
 {
@@ -26,5 +27,10 @@ class EmailTemplateController extends Controller
 
    
 return redirect('/my-template')->with('success', 'template created successfully');
+    }
+
+    public function allTemplate(){
+        $emailTemplate = EmailTemplate::whereUser_id(Sentinel::getUser()->id)->orderBy('id', 'desc')->get();
+        return view('frontend.template.all-template')->with('template', $emailTemplate);
     }
 }

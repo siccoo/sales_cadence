@@ -42,7 +42,7 @@
                                 </span>
                             </a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
+                               {{-- <li>
                                     <a href={{route('leads.create')}}>
                                         <i class="fas fa-table"></i>Add Lead</a>
                                 </li>
@@ -53,20 +53,7 @@
                                 <li>
                                     <a href={{route('leads.index')}}>
                                         <i class="far fa-calendar-alt"></i>Manage Leads</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-copy"></i>Pages
-                                    <a href="{{route('email-template')}}">
-                                        <i class="fas fa-table"></i>Add Template</a>
-                                </li>
-                                <li>
-                                    <a href="form.html">
-                                        <i class="far fa-check-square"></i>Template List</a>
-                                </li>
-                              
+                                </li> --}}
                             </ul>
                         </li>
                     
