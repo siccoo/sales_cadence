@@ -130,6 +130,10 @@ class LeadController extends Controller
         return view('frontend.leads.upload');
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function uploadPost(Request $request){
         $request->validate([
             'file' => 'required|mimes:xlx,xlsx,csv,ods|max:2048'
@@ -143,5 +147,6 @@ class LeadController extends Controller
         return redirect()->route('leads.index')
             ->with('success', 'Leads uploaded successfully');
     }
+
 
 }

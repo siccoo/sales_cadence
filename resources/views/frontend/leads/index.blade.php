@@ -1,1 +1,2 @@
-@extends('.frontend.layout.app')
+{{--@extends('.frontend.layout.app')--}}
+{{dd(Session::get('success'))}}
