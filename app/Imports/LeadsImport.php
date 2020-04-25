@@ -4,7 +4,7 @@ namespace App\Imports;
 
 use App\Lead;
 use Illuminate\Support\Collection;
-//use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
@@ -13,13 +13,9 @@ use Maatwebsite\Excel\Concerns\WithValidation;
 
 class LeadsImport implements ToCollection, WithHeadingRow, WithValidation
 {
-
     public function collection(Collection $collection)
     {
-
-
-
-//        $userId = Auth::user()->id;
+//        $userId = Auth::user();
 
         // TODO: Implement collection() method.
         foreach ($collection as $row){
