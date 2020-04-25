@@ -24,9 +24,9 @@ class LeadController extends Controller
     public function index()
     {
 //        $user = auth()->user();
-//        $leads = $user->leads;
-//        return view('leads.index', compact('leads'));
-        return view('frontend.leads.index');
+//        $leads = $user->leads()->latest()->paginate(5);
+        $leads = Lead::latest()->paginate(5);
+        return view('frontend.leads.index', compact('leads'));
     }
 
 
@@ -80,21 +80,19 @@ class LeadController extends Controller
 
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Lead $lead
-     * @return \Illuminate\Http\Response
+     * @param Lead $lead
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(Lead $lead)
     {
-        return view('leads.edit', compact('lead'));
+        return view('frontend.leads.edit', compact('lead'));
     }
 
 
     /**
      * @param Lead $lead
      * @param Request $request
-     * @return $this
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Lead $lead, Request $request)
     {
