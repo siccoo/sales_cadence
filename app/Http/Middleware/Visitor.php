@@ -18,6 +18,6 @@ class Visitor
     {
         if(!Sentinel::check())
            return $next($request);
-        return redirect('/dashboard')->with('please logout to continue');
+        return redirect('/admin/dashboard')->with('please logout to continue');
     }
 }

@@ -26,7 +26,7 @@ class EmailTemplateController extends Controller
    EmailTemplate::create($request->all());
 
    
-return redirect('/my-template')->with('success', 'template created successfully');
+return redirect(route('my-template'))->with('success', 'template created successfully');
     }
 
     public function allTemplate(){

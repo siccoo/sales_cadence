@@ -29,7 +29,7 @@ Route::post('/sign-up', 'Auth@signup')->name('signup');
 
 
 
-Route::group(['middleware' => ['user']], function(){
+Route::group(['middleware' => ['user'], 'prefix' => 'admin'], function(){
     Route::any('/logout', 'Auth@logout')->name('logout');
     Route::get('/dashboard', 'Auth@dashboard')->name('dashboard');
     
@@ -40,7 +40,16 @@ Route::group(['middleware' => ['user']], function(){
     Route::post('/add-email-template', 'EmailTemplateController@save')->name('email-template');
 
     Route::get('/my-template', 'EmailTemplateController@allTemplate')->name('my-template');
+    Route::get('/add-cadence', 'CadenceController@addCadence')->name('add.cadence');
+    Route::post('/add-cadence', 'CadenceController@saveCadence')->name('add.cadence');
 
+    
+
+    Route::get('/add-step/{masked_id}', 'CadenceController@step')->name('step');
+                                                                    
+    Route::post('/email-step/{id}', 'EmailCadenceController@addStep')->name('email.step');
+
+    Route::post('/save-cadence/{id}', 'CadenceController@saveAllCadence')->name('saveCadence');
 });
 
 // Route::get('/sign-in', 'Auth@signinPage')->name('signin');
