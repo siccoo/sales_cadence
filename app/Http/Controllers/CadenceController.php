@@ -30,7 +30,7 @@ class CadenceController extends Controller
         $cadence->masked_id = $maxed;
         $cadence->save();
 
-        return redirect(route('step', $maxed));
+        return redirect(route('step', $maxed))->with('success', 'please proceed to add steps to ' . $request->name);
    }
    public function step($masked_id){
 $cadence = Cadence::whereMasked_id($masked_id)->whereUser_id(Sentinel::getUser()->id)->first();
@@ -66,7 +66,7 @@ $leadmail->save();
  }
 }
 
-return redirect()->back();
+return redirect(route('my.cadence'))->with('success', 'cadence scheduled successfully');
  //dd($request->all());
 
 //  $cadence = Cadence::findorfail($id);
@@ -113,7 +113,7 @@ return redirect()->back();
 // }
 
 public function allcadence(){
-    $cadences = Cadence::whereUser_id(Sentinel::getUser()->id)->get();
+    $cadences = Cadence::whereUser_id(Sentinel::getUser()->id)->orderBy('id', 'desc')->paginate(5);
     return view('frontend.cadence.all-cadence')->with('cadences', $cadences);
 }
 }

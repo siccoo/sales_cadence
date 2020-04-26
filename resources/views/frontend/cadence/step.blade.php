@@ -8,6 +8,13 @@
   {{Session::get('error')}}
     </div>
     @endif
+    @if(Session::has('success'))
+
+    <div class="alert alert-success">
+  {{Session::get('error')}}
+
+    </div>
+    @endif
 <div class="row m-auto pt-3">
 <form action="{{route('saveCadence', $cadence->id)}}" method="post">  
 @csrf 

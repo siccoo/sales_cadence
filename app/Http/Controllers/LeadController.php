@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\LeadRequest;
 use App\Imports\LeadsImport;
 use App\Lead;
-use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
+use Sentinel;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
