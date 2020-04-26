@@ -19,7 +19,9 @@
 <form action="{{route('saveCadence', $cadence->id)}}" method="post">  
 @csrf 
 <?php $i = 1;?>
-<?php $templates = App\EmailTemplate::whereUser_id(Sentinel::getUser()->id)->get();?>
+<?php $templates = App\EmailTemplate::whereUser_id(Sentinel::getUser()->id)->get();
+$smsTemplates = App\SmsTemplate::whereUser_id(Sentinel::getUser()->id)->get();
+?>
 @forelse($emailCadence as $email)
 <div class="card">
 <div class="card-body">
@@ -44,6 +46,46 @@
         @endforelse
     </select></td>
     <td><input type="datetime-local" name="date[{{$email->id}}]" required></td>
+    
+    
+</tr>
+</tbody>
+
+    
+
+
+</table>
+</div>
+</div>
+@empty
+
+@endforelse
+
+
+@forelse($smsCadence as $sms)
+<div class="card">
+<div class="card-body">
+    <table class="table table-bordered">
+<thead><tr>
+    <th>S/N</th>
+    <th>Cadence Type</th>
+    <th>Template</th>
+    <th>Date to Schedule</th>
+</tr></thead>
+
+<tbody>
+
+<tr>
+    <td>{{$i++}}</td>
+    <td>SMS Cadence</td>
+    <td><select name="{{$sms->temp}}" class="form-control">
+        @forelse($smsTemplates as $template)
+        <option value="{{$template->id}}">{{$template->name}}</option>
+        @empty
+        Please create a template first
+        @endforelse
+    </select></td>
+    <td><input type="datetime-local" name="date[{{$sms->id}}]" required></td>
     
     
 </tr>
@@ -179,7 +221,8 @@
 </form>
 </div>
 <div class="col-md-4"> 
-    <form>
+    <form action="{{route('sms.step', $cadence->id)}}" method="post">
+    @csrf
                             <button id="close-image"><img src="{{asset('assets/images/sms.png')}}"></button>
 </form>
                             </div>

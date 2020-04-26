@@ -44,6 +44,8 @@ Route::group(['middleware' => ['user']], function(){
                                                                     
     Route::post('/email-step/{id}', 'EmailCadenceController@addStep')->name('email.step');
 
+    Route::post('/sms-step/{id}', 'SmsCadenceController@addStep')->name('sms.step');
+
     Route::post('/save-cadence/{id}', 'CadenceController@saveAllCadence')->name('saveCadence');
 
     Route::get('/cadence-list', 'CadenceController@allcadence')->name('my.cadence');
