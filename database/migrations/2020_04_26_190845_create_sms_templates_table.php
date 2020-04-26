@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSmsCadencesTable extends Migration
+class CreateSmsTemplatesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateSmsCadencesTable extends Migration
      */
     public function up()
     {
-        Schema::create('sms_cadences', function (Blueprint $table) {
+        Schema::create('sms_templates', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('user_id');
-            $table->integer('cadence_id');
-            $table->string('temp');
-            $table->integer('sms_template_id')->nullable();
-            $table->text('message')->nullable();
-            $table->string('date')->nullable();
+            $table->string('name');
+            $table->longText('body');
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ class CreateSmsCadencesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sms_cadences');
+        Schema::dropIfExists('sms_templates');
     }
 }

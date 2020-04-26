@@ -66,6 +66,29 @@ $leadmail->save();
  }
 }
 
+
+
+$smsCadence = SmsCadence::whereCadence_id($id)->get();
+ 
+
+ foreach($smsCadence as $sms){
+     $temp = $sms->temp;
+ $template = $request->$temp;
+
+ $sms->sms_template_id = $template;
+ $sms->date = date("Y-m-d H:i", strtotime($request->date[$sms->id]));
+ $sms->save();
+ 
+
+ foreach($request->leads as $key => $value){
+   $leadmail = new LeadMailCadence;
+   $leadmail->user_id = $key;
+   $leadmail->cadence_id = $id;
+$leadmail->email_cadence_id =  $email->id;
+$leadmail->save();
+ }
+}
+
 return redirect(route('my.cadence'))->with('success', 'cadence scheduled successfully');
  //dd($request->all());
 
