@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\LeadRequest;
 use App\Imports\LeadsImport;
 use App\Lead;
+use Sentinel;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 

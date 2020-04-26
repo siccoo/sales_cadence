@@ -33,7 +33,7 @@ class Auth extends Controller
     Sentinel::Authenticate($request->all());
 
     if(Sentinel::check()){
-        return redirect('/admin/dashboard');
+        return redirect('/dashboard');
     }else{
        return back()->with('error', 'incorrect login credentials');
     }

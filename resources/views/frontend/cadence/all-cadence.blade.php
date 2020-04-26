@@ -6,9 +6,9 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        @if($message = Session::get('success'))
+                        @if(Session::has('success'))
                             <div class="alert alert-success">
-                                Update Successful
+                               {{Session::get('success')}}
                             </div>
                          @endif
                         <!-- DATA TABLE -->
@@ -91,7 +91,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        
+                        {{$cadences->links()}}
                         <!-- END DATA TABLE -->
                     </div>
                 </div>
