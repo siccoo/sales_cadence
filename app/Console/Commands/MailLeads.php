@@ -9,6 +9,7 @@ use App\Lead;
 use App\EmailTemplate;
 use App\LeadMailCadence;
 use App\Cadence;
+use Mail;
 use App\EmailCadence;
 
 
@@ -47,21 +48,22 @@ class MailLeads extends Command
     {
         $now = date("Y-m-d H:i", strtotime(Carbon::now()->addHour()));
 
-        $emailCadence = EmailCadence::get();
-        if($emailCadence !== null){
+        $emailCadences = EmailCadence::get();
+        if($emailCadences !== null){
             
-                 $template = EmailTemplate::findorfail($emailCadence->email_template_id);
                  
-                 $emailCadence->where('date_string',  $now)->each(function($emailCadence) {
+                 
+                 $emailCadences->where('date_string',  $now)->each(function($emailCadence) {
+                    $template = EmailTemplate::findorfail($emailCadence->email_template_id);
                     if($emailCadence->delivered == 'NO')
                     {
-                        $leads = Lead::whereEmail_cadence($emailCadence->id)->get();
+                        $leads = LeadMailCadence::whereEmail_cadence_id($emailCadence->id)->get();
                        
                         foreach($leads as $lead) {
                             $leadname = $lead['lead']->first_name . ' ' .  $lead['lead']->last_name;
-                            $template->subject = str_replace('[name]', $leadname, $emailTemplate->subject);
-                            $template->body = str_replace('[name]', $leadname, $emailTemplate->subject);
-                            dispatch(new SendMailJob($lead['lead'], $temblate->subject, $template->body));
+                            $subject = str_replace('[name]', $leadname, $template->subject);
+                            $body = str_replace('[name]', $leadname, $template->body);
+                            dispatch(new SendMailJob($lead['lead']->email, $subject, $body));
                         }
                         $emailCadence->delivered = 'YES';
                         $emailCadence->save();   

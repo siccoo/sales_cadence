@@ -8,6 +8,8 @@ use App\EmailCadence;
 use App\SmsCadence;
 use App\EmailTemplate;
 use Sentinel;
+use App\Lead;
+use App\LeadMailCadence;
 use Mail;
 
 class CadenceController extends Controller
@@ -32,15 +34,15 @@ class CadenceController extends Controller
    }
    public function step($masked_id){
 $cadence = Cadence::whereMasked_id($masked_id)->whereUser_id(Sentinel::getUser()->id)->first();
-
+$leads = Lead::whereUser_id(Sentinel::getUser()->id)->get();
 $emailCadence = EmailCadence::whereCadence_id($cadence->id)->get();
 $smsCadence = SmsCadence::whereCadence_id($cadence->id)->get();
-    return view('frontend.cadence.step')->with('emailCadence', $emailCadence)->with('smsCadence', $smsCadence)->with('cadence', $cadence);
+    return view('frontend.cadence.step')->with('emailCadence', $emailCadence)->with('smsCadence', $smsCadence)->with('cadence', $cadence)->with('leads', $leads);
 
    }
 
  public function saveAllCadence(Request $request, $id){
-dd($request->all());
+//dd($request->all());
     $cadence = Cadence::findorfail($id);
 
 $emailCadence = EmailCadence::whereCadence_id($id)->get();
@@ -64,6 +66,7 @@ $leadmail->save();
  }
 }
 
+return redirect()->back();
  //dd($request->all());
 
 //  $cadence = Cadence::findorfail($id);
@@ -107,5 +110,10 @@ $leadmail->save();
  //dd($sub);
 
 
-// }  
+// }
+
+public function allcadence(){
+    $cadences = Cadence::whereUser_id(Sentinel::getUser()->id)->get();
+    return view('frontend.cadence.all-cadence')->with('cadences', $cadences);
+}
 }

@@ -36,7 +36,7 @@
         Please create a template first
         @endforelse
     </select></td>
-    <td><input type="datetime-local" name="date[{{$email->id}}]" id=""></td>
+    <td><input type="datetime-local" name="date[{{$email->id}}]" required></td>
     
     
 </tr>
@@ -91,28 +91,25 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                            @forelse($leads as $lead)
                                                 <tr>
                                                     <td>
-                                                        <!-- <label class="au-checkbox">
-                                                            <input type="checkbox" value="1" name="leads[1]">
-                                                            <span class="au-checkmark"></span>
-                                                        </label> -->
-                                                        <input type="checkbox" value="1" name="leads[1]"/>
+                                                        <input type="checkbox" value="1" name="leads[{{$lead->id}}]"/>
                                                     </td>
                                                     <td>
                                                         <div class="table-data__info">
-                                                            <h6>lori lynch</h6>
+                                                            <h6>{{$lead->first_name}} {{$lead->last_name}}</h6>
                                                             
                                                         </div>
                                                     </td>
                                                     <td>
                                                        <span>
-                                                                <a href="#">johndoe@gmail.com</a>
+                                                                <a href="#">{{$lead->email}}</a>
                                                             </span> 
                                                     </td>
                                                     <td>
                                                        <span>
-                                                                <a href="#">johndoe@gmail.com</a>
+                                                                <a href="#">{{$lead->email}}</a>
                                                             </span>
                                                     </td>
                                                     <td>
@@ -121,191 +118,12 @@
                                                         </span>
                                                     </td>
                                                 </tr>
+                                                @empty
+                                                You have not added any lead
+                                                @endforelse
 												
-												   <tr>
-                                                    <td>
-                                                    <input type="checkbox" value="1" name="leads[1]"/>
-                                                    </td>
-                                                    <td>
-                                                        <div class="table-data__info">
-                                                            <h6>lori lynch</h6>
-                                                            
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                       <span>
-                                                                <a href="#">johndoe@gmail.com</a>
-                                                            </span> 
-                                                    </td>
-                                                    <td>
-                                                       <span>
-                                                                <a href="#">johndoe@gmail.com</a>
-                                                            </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="more">
-                                                           
-                                                        </span>
-                                                    </td>
-                                                </tr>
+												   
 												
-												   <tr>
-                                                    <td>
-                                                    <input type="checkbox" value="1" name="leads[1]"/>
-                                                    </td>
-                                                    <td>
-                                                        <div class="table-data__info">
-                                                            <h6>lori lynch</h6>
-                                                            
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                       <span>
-                                                                <a href="#">johndoe@gmail.com</a>
-                                                            </span> 
-                                                    </td>
-                                                    <td>
-                                                       <span>
-                                                                <a href="#">johndoe@gmail.com</a>
-                                                            </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="more">
-                                                           
-                                                        </span>
-                                                    </td>
-                                                </tr>
-												
-												   <tr>
-                                                    <td>
-                                                    <input type="checkbox" value="1" name="leads[1]"/>
-                                                    </td>
-                                                    <td>
-                                                        <div class="table-data__info">
-                                                            <h6>lori lynch</h6>
-                                                            
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                       <span>
-                                                                <a href="#">johndoe@gmail.com</a>
-                                                            </span> 
-                                                    </td>
-                                                    <td>
-                                                       <span>
-                                                                <a href="#">johndoe@gmail.com</a>
-                                                            </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="more">
-                                                           
-                                                        </span>
-                                                    </td>
-                                                </tr>
-												
-												   <tr>
-                                                    <td>
-                                                    <input type="checkbox" value="1" name="leads[1]"/>
-                                                    </td>
-                                                    <td>
-                                                        <div class="table-data__info">
-                                                            <h6>lori lynch</h6>
-                                                            
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                       <span>
-                                                                <a href="#">johndoe@gmail.com</a>
-                                                            </span> 
-                                                    </td>
-                                                    <td>
-                                                       <span>
-                                                                <a href="#">johndoe@gmail.com</a>
-                                                            </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="more">
-                                                           
-                                                        </span>
-                                                    </td>
-                                                </tr>
-												   <tr>
-                                                    <td>
-                                                    <input type="checkbox" value="1" name="leads[1]"/>
-                                                    </td>
-                                                    <td>
-                                                        <div class="table-data__info">
-                                                            <h6>lori lynch</h6>
-                                                            
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                       <span>
-                                                                <a href="#">johndoe@gmail.com</a>
-                                                            </span> 
-                                                    </td>
-                                                    <td>
-                                                       <span>
-                                                                <a href="#">johndoe@gmail.com</a>
-                                                            </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="more">
-                                                           
-                                                        </span>
-                                                    </td>
-                                                </tr>   <tr>
-                                                    <td>
-                                                    <input type="checkbox" value="1" name="leads[1]"/>
-                                                    </td>
-                                                    <td>
-                                                        <div class="table-data__info">
-                                                            <h6>lori lynch</h6>
-                                                            
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                       <span>
-                                                                <a href="#">johndoe@gmail.com</a>
-                                                            </span> 
-                                                    </td>
-                                                    <td>
-                                                       <span>
-                                                                <a href="#">johndoe@gmail.com</a>
-                                                            </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="more">
-                                                           
-                                                        </span>
-                                                    </td>
-                                                </tr>
-												   <tr>
-                                                    <td>
-                                                    <input type="checkbox" value="1" name="leads[1]"/>
-                                                    </td>
-                                                    <td>
-                                                        <div class="table-data__info">
-                                                            <h6>lori lynch</h6>
-                                                            
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                       <span>
-                                                                <a href="#">johndoe@gmail.com</a>
-                                                            </span> 
-                                                    </td>
-                                                    <td>
-                                                       <span>
-                                                                <a href="#">johndoe@gmail.com</a>
-                                                            </span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="more">
-                                                           
-                                                        </span>
-                                                    </td>
-                                                </tr>
                                                
                                              
                                             </tbody>

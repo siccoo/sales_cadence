@@ -17,22 +17,23 @@
                         </ul>
                     </div>
                 @endif
-                <form action="{{ route('leads.store') }}" method="POST">
-                    @csrf
 
+                <form action="{{ route('leads.update', $lead->id) }}" method="POST">
+                    @csrf
+                    @method('PUT')
                     <div class="row">
                         <div class="col-md-6 col-xs-12">
                             <div class="form-group">
                                 <label for="cc-payment" class="control-label mb-1">First Name</label>
                                 <input type="text" name="first_name" class="form-control"
-                                       value="{{old("first_name")}}">
+                                       value="{{$lead->first_name}}">
                             </div>
                         </div>
                         <div class="col-md-6 col-xs-12">
                             <div class="form-group has-success">
                                 <label for="cc-name" class="control-label mb-1">Last Name</label>
                                 <input type="text" name="last_name" class="form-control"
-                                       value="{{old("last_name")}}">
+                                       value="{{$lead->last_name}}">
                             </div>
                         </div>
                     </div>
@@ -42,14 +43,14 @@
                             <div class="form-group">
                                 <label for="cc-number" class="control-label mb-1">Email</label>
                                 <input type="email" name="email" class="form-control"
-                                       value="{{old("email")}}">
+                                       value="{{$lead->email}}">
                             </div>
                         </div>
                         <div class="col-md-6 col-xs-12">
                             <label for="x_card_code" class="control-label mb-1">Phone</label>
                             <div class="input-group">
                                 <input type="text" name="phone" class="form-control"
-                                       value="{{old("phone")}}"></div>
+                                       value="{{$lead->phone}}"></div>
                         </div>
 
                     </div>
@@ -59,7 +60,7 @@
                             <div class="form-group">
                                 <label for="cc-exp" class="control-label mb-1">Company Name</label>
                                 <input type="text" name="company_name" class="form-control"
-                                       value="{{old("company_name")}}">
+                                       value="{{$lead->company_name}}">
                             </div>
                         </div>
 
@@ -67,21 +68,18 @@
                             <label for="x_card_code" class="control-label mb-1">Designation</label>
                             <div class="input-group">
                                 <input type="text" name="designation" class="form-control"
-                                       value="{{old("designation")}}">
+                                       value="{{$lead->designation}}">
                             </div>
                         </div>
                     </div>
                     <div class="input-group">
                         <input type="hidden" name="user_id" class="form-control"
-                               value={{$user}}>
+                               value={{$lead->user_id}}>
                     </div>
 
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary btn-sm">
                             <i class="fa fa-dot-circle-o"></i> Submit
-                        </button>
-                        <button type="reset" class="btn btn-danger btn-sm">
-                            <i class="fa fa-ban"></i> Reset
                         </button>
                     </div>
                 </form>

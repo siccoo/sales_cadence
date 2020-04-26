@@ -17,7 +17,6 @@ Route::group(['middleware' => ['visitor']], function(){
     })->name('home');
 
 
-    
 Route::get('/sign-up', 'Auth@signupPage')->name('signup');
 
 Route::post('/sign-in', 'Auth@signin')->name('signin');
@@ -25,18 +24,14 @@ Route::post('/sign-up', 'Auth@signup')->name('signup');
 });
 
 
-
-
-
-
-Route::group(['middleware' => ['user'], 'prefix' => 'admin'], function(){
+Route::group(['middleware' => ['user']], function(){
     Route::any('/logout', 'Auth@logout')->name('logout');
     Route::get('/dashboard', 'Auth@dashboard')->name('dashboard');
-    
+
     Route::get('/add-email-template', function () {
         return view('frontend.template.email');
     })->name('email-template');
-    
+
     Route::post('/add-email-template', 'EmailTemplateController@save')->name('email-template');
 
     Route::get('/my-template', 'EmailTemplateController@allTemplate')->name('my-template');
@@ -50,6 +45,13 @@ Route::group(['middleware' => ['user'], 'prefix' => 'admin'], function(){
     Route::post('/email-step/{id}', 'EmailCadenceController@addStep')->name('email.step');
 
     Route::post('/save-cadence/{id}', 'CadenceController@saveAllCadence')->name('saveCadence');
+
+    Route::get('/cadence-list', 'CadenceController@allcadence')->name('my.cadence');
+    //LEAD ROUTES
+    Route::get('leads/upload', 'LeadController@upload')->name('leads.upload');
+    Route::post('leads/upload/post', 'LeadController@uploadPost')->name('leads.upload.post');
+    Route::resource('leads', 'LeadController');
+
 });
 
 // Route::get('/sign-in', 'Auth@signinPage')->name('signin');

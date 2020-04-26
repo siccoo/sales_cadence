@@ -26,14 +26,9 @@
                                     <a href="{{route('home')}}">
                                         <i class="fas fa-tachometer-alt"></i>Dashboard 1</a>
                                 </li>
-                             
+
                             </ul>
                         </li>
-                        <!-- <li>
-                            <a href="inbox.html">
-                                <i class="fas fa-chart-bar"></i>Inbox</a>
-                            <span class="inbox-num">3</span>
-                        </li> -->
                         <li class="has-sub">
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-trophy"></i>SMS Template
@@ -41,22 +36,8 @@
                                     <i class="fas fa-angle-down"></i>
                                 </span>
                             </a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                               {{-- <li>
-                                    <a href={{route('leads.create')}}>
-                                        <i class="fas fa-table"></i>Add Lead</a>
-                                </li>
-                                <li>
-                                    <a href={{route('leads.upload')}}>
-                                        <i class="far fa-check-square"></i>Upload Leads</a>
-                                </li>
-                                <li>
-                                    <a href={{route('leads.index')}}>
-                                        <i class="far fa-calendar-alt"></i>Manage Leads</a>
-                                </li> --}}
-                            </ul>
                         </li>
-                    
+
                         <li class="has-sub">
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-trophy"></i>Email Template
@@ -73,7 +54,7 @@
                                     <a href="form.html">
                                         <i class="far fa-check-square"></i>Template List</a>
                                 </li>
-                              
+
                             </ul>
                         </li>
 
@@ -90,13 +71,37 @@
                                         <i class="fas fa-table"></i>Add Cadence</a>
                                 </li>
                                 <li>
-                                    <a href="form.html">
+                                    <a href="{{route('my.cadence')}}">
                                         <i class="far fa-check-square"></i>Cadence List</a>
                                 </li>
-                              
+
                             </ul>
                         </li>
-                        
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fas fa-trophy"></i>Lead
+                                <span class="arrow">
+                                    <i class="fas fa-angle-down"></i>
+                                </span>
+                            </a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                 <li>
+                                     <a href={{route('leads.create')}}>
+                                         <i class="fas fa-table"></i>Add Lead</a>
+                                 </li>
+                                 <li>
+                                     <a href={{route('leads.upload')}}>
+                                         <i class="far fa-check-square"></i>Upload Leads</a>
+                                 </li>
+                                 <li>
+                                     <a href={{route('leads.index')}}>
+                                         <i class="far fa-calendar-alt"></i>Manage Leads</a>
+                                 </li>
+                            </ul>
+                        </li>
+
+
+
                     </ul>
                 </nav>
             </div>

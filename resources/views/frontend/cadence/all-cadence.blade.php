@@ -36,17 +36,17 @@
                                 </button>
                             </div>
                             <div class="table-data__tool-right">
-                                <button class="au-btn au-btn-icon au-btn--green au-btn--small">
+                                <a href="{{route('add.cadence')}}" class="au-btn au-btn-icon au-btn--green au-btn--small">
                                     <i class="zmdi zmdi-plus"></i>add item
-                                </button>
-                                <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
+                                </a>
+                                <!-- <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
                                     <select class="js-select2" name="type">
                                         <option selected="selected">Export</option>
                                         <option value="">Option 1</option>
                                         <option value="">Option 2</option>
                                     </select>
                                     <div class="dropDownSelect2"></div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <div class="table-responsive table-responsive-data2">
@@ -54,61 +54,44 @@
                                 <thead>
                                 <tr>
                                     <th>
-                                        <label class="au-checkbox">
+                                        <!-- <label class="au-checkbox">
                                             <input type="checkbox">
                                             <span class="au-checkmark"></span>
-                                        </label>
+                                        </label> -->
                                     </th>
                                     <th>name</th>
-                                    <th>email</th>
-                                    <th>description</th>
+                                    <th>Date created</th>
+                                    <th>No of users</th>
                                     <th>status</th>
                                     <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($leads as $lead)
+                                @foreach($cadences as $cadence)
                                 <tr class="tr-shadow">
                                     <td>
-                                        <label class="au-checkbox">
+                                        <!-- <label class="au-checkbox">
                                             <input type="checkbox">
                                             <span class="au-checkmark"></span>
-                                        </label>
+                                        </label> -->
                                     </td>
-                                    <td>{{$lead->first_name}} {{$lead->last_name}}</td>
+                                    <td>{{$cadence->name}}</td>
                                     <td>
-                                        <span class="block-email">{{$lead->email}}</span>
+                                        <span class="block-email">{{$cadence->created_at}}</span>
                                     </td>
                                     <td class="desc">Samsung S8 Black</td>
                                     <td>
                                         <span class="status--process">Processed</span>
                                     </td>
-                                    <td>
-                                        <div class="table-data-feature">
-                                            <form method="POST" action={{route('leads.destroy', $lead->id)}} class="table-data-feature">
-                                                <a class="item btn" data-toggle="tooltip" data-placement="top"
-                                                   href={{route('leads.edit', $lead->id)}} title="Edit">
-                                                    <i class="zmdi zmdi-edit"></i>
-                                                </a>
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="item" data-toggle="tooltip" data-placement="top"
-                                                        title="Delete">
-                                                    <i class="zmdi zmdi-delete"></i>
-                                                </button>
-                                                <button class="item" data-toggle="tooltip" data-placement="top"
-                                                        title="More">
-                                                    <i class="zmdi zmdi-more"></i>
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </td>
+                                    <!-- <td>
+                                      
+                                    </td> -->
                                 </tr>
                                 @endforeach
                                 </tbody>
                             </table>
                         </div>
-                        {{$leads->links()}}
+                        
                         <!-- END DATA TABLE -->
                     </div>
                 </div>

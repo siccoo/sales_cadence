@@ -24,9 +24,9 @@ class LeadController extends Controller
     public function index()
     {
 //        $user = auth()->user();
-//        $leads = $user->leads;
-//        return view('leads.index', compact('leads'));
-        return view('frontend.leads.index');
+//        $leads = $user->leads()->latest()->paginate(5);
+        $leads = Lead::latest()->paginate(5);
+        return view('frontend.leads.index', compact('leads'));
     }
 
 
@@ -35,34 +35,29 @@ class LeadController extends Controller
      */
     public function create()
     {
-//        $users = User::role('Sales')->get();
-//        $products = Product::all();
-//        return view('leads.create', compact(['users', 'products']));
-        return view('frontend.leads.create');
+//      $users = auth()->user();
+        $user = Sentinel::getUser()->id;
+        return view('frontend.leads.create', compact(['user']));
 
     }
 
 
     /**
      * @param LeadRequest $request
-     * @return $this
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(LeadRequest $request)
     {
         $input = $request->validated();
-        $lead = Lead::create([
+        Lead::create([
             'first_name' => $input['first_name'],
             'last_name' => $input['last_name'],
             'email' => $input['email'],
             'phone' => $input['phone'],
             'company_name' => $input['company_name'],
-            'designation' => $input['designation']
+            'designation' => $input['designation'],
+            'user_id' => $input['user_id']
         ]);
-
-        $user = User::find($input['user_id']);
-
-        // Save to lead_user table
-        $user->leads()->attach($lead->id);
 
         return redirect()->route('leads.index')
             ->with('success', 'Lead created successfully.');
@@ -85,21 +80,19 @@ class LeadController extends Controller
 
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Lead $lead
-     * @return \Illuminate\Http\Response
+     * @param Lead $lead
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(Lead $lead)
     {
-        return view('leads.edit', compact('lead'));
+        return view('frontend.leads.edit', compact('lead'));
     }
 
 
     /**
      * @param Lead $lead
      * @param Request $request
-     * @return $this
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Lead $lead, Request $request)
     {
@@ -135,6 +128,10 @@ class LeadController extends Controller
         return view('frontend.leads.upload');
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function uploadPost(Request $request){
         $request->validate([
             'file' => 'required|mimes:xlx,xlsx,csv,ods|max:2048'
@@ -147,7 +144,7 @@ class LeadController extends Controller
 
         return redirect()->route('leads.index')
             ->with('success', 'Leads uploaded successfully');
-
     }
+
 
 }

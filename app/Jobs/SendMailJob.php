@@ -19,10 +19,10 @@ class SendMailJob implements ShouldQueue
      * @return void
      */
 
-     protected $lead, $sub, $body;
-    public function __construct($lead, $sub, $body)
+     protected $email, $sub, $body;
+    public function __construct($email, $sub, $body)
     {
-        $this->lead = $user;
+        $this->email = $email;
         $this->sub = $sub;
         $this->body = $body;
     }
@@ -35,7 +35,7 @@ class SendMailJob implements ShouldQueue
     public function handle()
     {
       return Mail::send([], [], function ($message) {
-          $message->to($this->$lead->email)
+          $message->to($this->email)
           ->subject($this->sub)
           ->from('hannah.okwelum@salesruby.com')
          
