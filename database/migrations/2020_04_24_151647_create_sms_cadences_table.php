@@ -17,7 +17,7 @@ class CreateSmsCadencesTable extends Migration
             $table->bigIncrements('id');
             $table->integer('user_id');
             $table->integer('cadence_id');
-            $table->integer('sms_template_id')->nullabele();
+            $table->integer('sms_template_id')->nullable();
             $table->string('message')->nullable();
             $table->string('date');
             $table->timestamps();

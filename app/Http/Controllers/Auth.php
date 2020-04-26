@@ -41,7 +41,7 @@ class Auth extends Controller
 
 public function logout(){
     Sentinel::logout();
- 
+
     return redirect('/');
  }
 
