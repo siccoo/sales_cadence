@@ -3,8 +3,8 @@
 namespace App\Imports;
 
 use App\Lead;
+use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
@@ -15,7 +15,7 @@ class LeadsImport implements ToCollection, WithHeadingRow, WithValidation
 {
     public function collection(Collection $collection)
     {
-//        $userId = Auth::user();
+        $userId = Sentinel::getUser()->id;
 
         // TODO: Implement collection() method.
         foreach ($collection as $row){
@@ -25,7 +25,7 @@ class LeadsImport implements ToCollection, WithHeadingRow, WithValidation
                     'first_name' => $row['first_name'],
                     'last_name' => $row['last_name'],
                     'email' => $row['email'],
-                    'user_id' => 1,
+                    'user_id' => $userId,
                     'phone' => $row['phone'],
                     'company_name' => $row['company_name'],
                     'designation' => $row['designation'],

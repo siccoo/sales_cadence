@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\LeadRequest;
 use App\Imports\LeadsImport;
 use App\Lead;
+use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -23,8 +24,7 @@ class LeadController extends Controller
      */
     public function index()
     {
-//        $user = auth()->user();
-//        $leads = $user->leads()->latest()->paginate(5);
+        $user = Sentinel::getUser()->id;
         $leads = Lead::latest()->paginate(5);
         return view('frontend.leads.index', compact('leads'));
     }
@@ -35,7 +35,6 @@ class LeadController extends Controller
      */
     public function create()
     {
-//      $users = auth()->user();
         $user = Sentinel::getUser()->id;
         return view('frontend.leads.create', compact(['user']));
 
