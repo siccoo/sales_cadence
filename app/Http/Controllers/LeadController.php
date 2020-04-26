@@ -36,7 +36,7 @@ class LeadController extends Controller
     public function create()
     {
 //      $users = auth()->user();
-        $user = 1;
+        $user = Sentinel::getUser()->id;
         return view('frontend.leads.create', compact(['user']));
 
     }

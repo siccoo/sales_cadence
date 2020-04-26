@@ -67,11 +67,11 @@
                             </a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
-                                    <a href="table.html">
+                                    <a href="{{route('add.cadence')}}">
                                         <i class="fas fa-table"></i>Add Cadence</a>
                                 </li>
                                 <li>
-                                    <a href="form.html">
+                                    <a href="{{route('my.cadence')}}">
                                         <i class="far fa-check-square"></i>Cadence List</a>
                                 </li>
 
