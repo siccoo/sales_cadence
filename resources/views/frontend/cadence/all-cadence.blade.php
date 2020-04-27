@@ -79,12 +79,12 @@
                                     <td>
                                         <span class="block-email">{{$cadence->created_at}}</span>
                                     </td>
-                                    <td class="desc">Samsung S8 Black</td>
+                                    <td class="desc">{{$user->first_name}} {{$user->last_name}}</td>
                                     <td>
                                         <span class="status--process">Processed</span>
                                     </td>
                                     <!-- <td>
-                                      
+
                                     </td> -->
                                 </tr>
                                 @endforeach

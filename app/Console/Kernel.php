@@ -14,6 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         'App\Console\Commands\MailLeads',
+        'App\Console\Commands\SMSLeads'
     ];
 
     /**
@@ -29,6 +30,8 @@ class Kernel extends ConsoleKernel
 
         $schedule->command('mail:leads')
             ->everyMinute();
+        $schedule->command('sms:leads')
+            ->everyFiveMinutes();
     }
 
     /**

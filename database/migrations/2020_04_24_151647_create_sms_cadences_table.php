@@ -21,6 +21,7 @@ class CreateSmsCadencesTable extends Migration
             $table->integer('sms_template_id')->nullable();
             $table->text('message')->nullable();
             $table->string('date')->nullable();
+            $table->enum('delivered', ['YES', 'NO'])->default('NO');
             $table->timestamps();
         });
     }

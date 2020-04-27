@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLeadMailCadencesTable extends Migration
+class CreateLeadSmsCadenceTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateLeadMailCadencesTable extends Migration
      */
     public function up()
     {
-        Schema::create('lead_mail_cadences', function (Blueprint $table) {
+        Schema::create('lead_sms_cadence', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('user_id');
             $table->integer('cadence_id');
@@ -29,6 +29,6 @@ class CreateLeadMailCadencesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lead_mail_cadences');
+        Schema::dropIfExists('lead_sms_cadence');
     }
 }

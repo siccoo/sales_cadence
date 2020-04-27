@@ -17,7 +17,7 @@ class CreateSmsTemplatesTable extends Migration
             $table->bigIncrements('id');
             $table->integer('user_id');
             $table->string('name');
-            $table->longText('body');
+            $table->longText('message');
             $table->timestamps();
         });
     }

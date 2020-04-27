@@ -16,8 +16,8 @@
     </div>
     @endif
 <div class="row m-auto pt-3">
-<form action="{{route('saveCadence', $cadence->id)}}" method="post">  
-@csrf 
+<form action="{{route('saveCadence', $cadence->id)}}" method="post">
+@csrf
 <?php $i = 1;?>
 <?php $templates = App\EmailTemplate::whereUser_id(Sentinel::getUser()->id)->get();
 $smsTemplates = App\SmsTemplate::whereUser_id(Sentinel::getUser()->id)->get();
@@ -46,12 +46,12 @@ $smsTemplates = App\SmsTemplate::whereUser_id(Sentinel::getUser()->id)->get();
         @endforelse
     </select></td>
     <td><input type="datetime-local" name="date[{{$email->id}}]" required></td>
-    
-    
+
+
 </tr>
 </tbody>
 
-    
+
 
 
 </table>
@@ -86,12 +86,12 @@ $smsTemplates = App\SmsTemplate::whereUser_id(Sentinel::getUser()->id)->get();
         @endforelse
     </select></td>
     <td><input type="datetime-local" name="date[{{$sms->id}}]" required></td>
-    
-    
+
+
 </tr>
 </tbody>
 
-    
+
 
 
 </table>
@@ -148,13 +148,8 @@ $smsTemplates = App\SmsTemplate::whereUser_id(Sentinel::getUser()->id)->get();
                                                     <td>
                                                         <div class="table-data__info">
                                                             <h6>{{$lead->first_name}} {{$lead->last_name}}</h6>
-                                                            
+
                                                         </div>
-                                                    </td>
-                                                    <td>
-                                                       <span>
-                                                                <a href="#">{{$lead->email}}</a>
-                                                            </span> 
                                                     </td>
                                                     <td>
                                                        <span>
@@ -162,27 +157,32 @@ $smsTemplates = App\SmsTemplate::whereUser_id(Sentinel::getUser()->id)->get();
                                                             </span>
                                                     </td>
                                                     <td>
+                                                       <span>
+                                                                <a href="#">{{$lead->phone}}</a>
+                                                            </span>
+                                                    </td>
+                                                    <td>
                                                         <span class="more">
-                                                           
+
                                                         </span>
                                                     </td>
                                                 </tr>
                                                 @empty
                                                 You have not added any lead
                                                 @endforelse
-												
-												   
-												
-                                               
-                                             
+
+
+
+
+
                                             </tbody>
                                         </table>
                                     </div>
                                     <div class="user-data__footer">
                                         <button class="au-btn au-btn-load">Execute Cadence</button>
-                                    </div> 
+                                    </div>
                                 </div>
-                               
+
 @endif
 </form>
 </div>
@@ -195,9 +195,9 @@ $smsTemplates = App\SmsTemplate::whereUser_id(Sentinel::getUser()->id)->get();
                                         <!-- <strong class="card-title mb-3">Add Step</strong> -->
                                     </div>
                                     <div class="card-body">
-                                  
+
                                     <button class="btn btn-success" data-toggle="modal" data-target="#staticModal">Add Step</button>
-             
+
                                     </div>
                                 </div>
                             </div>
@@ -214,19 +214,19 @@ $smsTemplates = App\SmsTemplate::whereUser_id(Sentinel::getUser()->id)->get();
 						</div>
 						<div class="modal-body">
                         <div class="row">
-                            <div class="col-md-4"> 
-                                <form action="{{route('email.step', $cadence->id)}}" method="post"> 
+                            <div class="col-md-4">
+                                <form action="{{route('email.step', $cadence->id)}}" method="post">
                                     @csrf
                             <button type="submit"><img src="{{asset('assets/images/mail.png')}}"></button>
 </form>
 </div>
-<div class="col-md-4"> 
+<div class="col-md-4">
     <form action="{{route('sms.step', $cadence->id)}}" method="post">
     @csrf
                             <button id="close-image"><img src="{{asset('assets/images/sms.png')}}"></button>
 </form>
                             </div>
-                            <div class="col-md-4"> 
+                            <div class="col-md-4">
     <form>
                             <button id="close-image"><img src="{{asset('assets/images/call.png')}}"></button>
 </form>
@@ -238,7 +238,7 @@ $smsTemplates = App\SmsTemplate::whereUser_id(Sentinel::getUser()->id)->get();
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <!-- <button type="button" class="btn btn-primary">Confirm</button> -->
-                            
+
 						</div>
 					</div>
 				</div>
